@@ -45,28 +45,34 @@ export default function App() {
         <Stack.Screen
           component={LoginScreen}
           name="Login"
-          options={{gestureEnabled: false, headerShown: true, headerTitle: ''}}
+          options={{
+              gestureEnabled: false,
+             
+            }} 
         />
-        <Stack.Screen
-          component={DetailScreen}
-          name="Detail"
-          initialParams={{age: 23, hobies: 'swimming'}}
-        />
+        <Stack.Group /* Ekranları gruplamak için kullanılır. */
+          screenOptions={{backgroundColor: 'pink', presentation: 'modal'}}>
+          <Stack.Screen
+            component={DetailScreen}
+            name="Detail"
+            initialParams={{age: 23, hobies: 'swimming'}}
+          />
 
-        {/* Custom props verme: */}
+          {/* Custom props verme: */}
 
-        <Stack.Screen name="CustomStack">
-          {props => (
-            <HomeScreen
-              {...props}
-              extraData={[
-                {title: 'Welcome'},
-                {title: 'Welcome'},
-                {title: 'Welcome'},
-              ]}
-            />
-          )}
-        </Stack.Screen>
+          <Stack.Screen name="CustomStack">
+            {props => (
+              <HomeScreen
+                {...props}
+                extraData={[
+                  {title: 'Welcome'},
+                  {title: 'Welcome'},
+                  {title: 'Welcome'},
+                ]}
+              />
+            )}
+          </Stack.Screen>
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );
